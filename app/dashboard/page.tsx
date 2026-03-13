@@ -88,8 +88,8 @@ export default function Dashboard() {
           <MapPicker lat={lat} lon={lon} onChange={(newLat, newLon) => { setLat(newLat); setLon(newLon); reverseGeocode(newLat, newLon); }} />
           <p style={{ marginTop: "12px", fontSize: "13px", color: "#6a8a6a", textAlign: "center" }}>ضغط على الخريطة أو سحب الدبوس باش تحدد موقع أرضك بالضبط</p>
         </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
+        <a href={`/dashboard/scoring?lat=${lat}&lon=${lon}`} style={{ textDecoration: "none" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
           {[
             { icon: "🌾", title: "ملاءمة المحاصيل", desc: "9 محاصيل مغربية مُقيَّمة", color: "rgba(201,142,82,0.15)" },
             { icon: "⛅", title: "الطقس", desc: "توقعات 7 أيام لموقعك", color: "rgba(61,120,180,0.15)" },
@@ -103,6 +103,7 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
+        </a>
       </div>
     </main>
   );
