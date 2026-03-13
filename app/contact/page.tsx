@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
 import Navbar from "@/app/components/Navbar";
 
@@ -10,7 +9,7 @@ export default function ContactPage() {
 
   function handleSubmit() {
     if (!form.name || !form.email || !form.message) return;
-    const mailtoLink = `mailto:elghemary@gmail.com?subject=${encodeURIComponent(form.subject || "رسالة من موقع فلاحة MA")}&body=${encodeURIComponent(`الاسم: ${form.name}\nالبريد: ${form.email}\n\n${form.message}`)}`;
+    const mailtoLink = `mailto:elghemary@gmail.com?subject=${encodeURIComponent(form.subject || "رسالة من موقع GreenLife")}&body=${encodeURIComponent(`الاسم: ${form.name}\nالبريد: ${form.email}\n\n${form.message}`)}`;
     window.location.href = mailtoLink;
     setSent(true);
   }
@@ -39,6 +38,28 @@ export default function ContactPage() {
               <div style={{ color: "#9ab89a", fontSize: "13px" }}>{item.val}</div>
             </div>
           ))}
+        </div>
+
+        {/* Research CTA */}
+        <div style={{ background: "rgba(61,158,102,0.06)", border: "1px solid rgba(61,158,102,0.2)", borderRadius: "20px", padding: "36px", marginBottom: "48px" }}>
+          <div style={{ fontSize: "36px", marginBottom: "12px" }}>🔬</div>
+          <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "26px", color: "#3d9e66", marginBottom: "12px" }}>للجامعات ومراكز البحث العلمي</h2>
+          <p style={{ color: "#6a8a6a", fontSize: "15px", lineHeight: 1.9, marginBottom: "20px" }}>
+            GreenLife تبحث بنشاط عن شراكات أكاديمية وعلمية لتطوير المرحلة القادمة من المنصة. نحتاج تحديداً:
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "20px" }}>
+            {[
+              { icon: "📐", text: "باحثون في النمذجة الرياضية الزراعية" },
+              { icon: "🤝", text: "شراكات لجمع بيانات حقلية ميدانية" },
+              { icon: "🧬", text: "متخصصون في تعلم الآلة التطبيقي على الزراعة" },
+            ].map((item, i) => (
+              <div key={i} style={{ background: "rgba(61,158,102,0.08)", borderRadius: "10px", padding: "16px", display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                <span style={{ fontSize: "20px" }}>{item.icon}</span>
+                <span style={{ color: "#9ab89a", fontSize: "13px", lineHeight: 1.6 }}>{item.text}</span>
+              </div>
+            ))}
+          </div>
+          <p style={{ color: "#5a7a5a", fontSize: "13px" }}>إذا كنت باحثاً أو منتمياً لمؤسسة أكاديمية، تواصل معنا عبر النموذج أدناه أو مباشرة على البريد الإلكتروني.</p>
         </div>
 
         {/* Form */}

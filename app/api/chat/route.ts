@@ -5,7 +5,7 @@ const client = new Anthropic();
 
 export async function POST(req: NextRequest) {
   try {
-    const { message, context, image, imageType, history } = await req.json();
+    const { message, context, image, imageType, pdf, history } = await req.json();
 
     const conversationMessages: Anthropic.MessageParam[] = [];
 
@@ -23,7 +23,13 @@ export async function POST(req: NextRequest) {
               },
             });
           }
-          if (msg.text && msg.text !== "📷 صورة") {
+          if (msg.pdf) {
+            content.push({
+              type: "document",
+              source: { type: "base64", media_type: "application/pdf", data: msg.pdf },
+            } as Anthropic.ContentBlockParam);
+          }
+          if (msg.text && msg.text !== "📷 صورة" && !msg.text.startsWith("📄 ")) {
             content.push({ type: "text", text: msg.text });
           }
           if (content.length > 0) {
@@ -43,9 +49,15 @@ export async function POST(req: NextRequest) {
         source: { type: "base64", media_type: mediaType, data: image },
       });
     }
+    if (pdf) {
+      currentContent.push({
+        type: "document",
+        source: { type: "base64", media_type: "application/pdf", data: pdf },
+      } as Anthropic.ContentBlockParam);
+    }
     currentContent.push({
       type: "text",
-      text: message || (image ? "شنو كاين فهاد الصورة؟ حلل التربة أو المحصول وعطيني رأيك الزراعي بالدارجة." : ""),
+      text: message || (pdf ? "حلل هاد الوثيقة وعطيني أهم المعلومات الزراعية بالدارجة." : image ? "شنو كاين فهاد الصورة؟ حلل التربة أو المحصول وعطيني رأيك الزراعي بالدارجة." : ""),
     });
 
     conversationMessages.push({ role: "user", content: currentContent });

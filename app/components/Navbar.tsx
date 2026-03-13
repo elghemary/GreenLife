@@ -35,7 +35,7 @@ export default function Navbar() {
     }}>
       <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
         <span style={{ fontSize: "24px" }}>🌾</span>
-        <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>فلاحة MA</span>
+        <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>GreenLife</span>
       </Link>
 
       <div style={{ display: "flex", gap: "28px", alignItems: "center" }}>

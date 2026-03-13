@@ -7,6 +7,8 @@ interface Message {
   text: string;
   image?: string;
   imageType?: string;
+  pdf?: string;
+  pdfName?: string;
 }
 
 function ChatContent() {
@@ -28,9 +30,12 @@ function ChatContent() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [imageType, setImageType] = useState<string>("image/jpeg");
+  const [pdfBase64, setPdfBase64] = useState<string | null>(null);
+  const [pdfName, setPdfName] = useState<string | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const pdfRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<any>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -117,19 +122,40 @@ function ChatContent() {
     if (fileRef.current) fileRef.current.value = "";
   }
 
+  // ── PDF Upload ────────────────────────────────────────────────
+  function handlePdfChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPdfName(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      setPdfBase64(result.split(",")[1]);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearPdf() {
+    setPdfBase64(null);
+    setPdfName(null);
+    if (pdfRef.current) pdfRef.current.value = "";
+  }
+
   // ── Send ──────────────────────────────────────────────────────
   async function sendMessage() {
-    if ((!input.trim() && !imageBase64) || loading) return;
+    if ((!input.trim() && !imageBase64 && !pdfBase64) || loading) return;
     const userMsg = input.trim();
     setInput("");
 
     const newUserMsg: Message = {
       role: "user",
-      text: userMsg || "📷 صورة",
+      text: userMsg || (pdfBase64 ? `📄 ${pdfName}` : "📷 صورة"),
       ...(imagePreview ? { image: imagePreview, imageType } : {}),
+      ...(pdfBase64 ? { pdf: pdfBase64, pdfName: pdfName ?? undefined } : {}),
     };
     setMessages((prev) => [...prev, newUserMsg]);
     clearImage();
+    clearPdf();
     setLoading(true);
 
     const history = [...messages, newUserMsg].slice(-10).map((m) => ({
@@ -137,6 +163,7 @@ function ChatContent() {
       text: m.text,
       image: m.image ? m.image.split(",")[1] : undefined,
       imageType: m.imageType,
+      pdf: m.pdf,
     }));
 
     try {
@@ -148,6 +175,7 @@ function ChatContent() {
           context: `الموقع: ${location} (${lat}, ${lon})`,
           image: imageBase64,
           imageType,
+          pdf: pdfBase64,
           history,
         }),
       });
@@ -183,7 +211,7 @@ function ChatContent() {
       <nav style={{ background: "#112214", borderBottom: "1px solid rgba(61,158,102,0.2)", padding: "16px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ fontSize: "24px" }}>🌾</span>
-          <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>فلاحة MA</span>
+          <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>GreenLife</span>
         </div>
         <a href="/dashboard" style={{ color: "#9ab89a", fontSize: "14px", textDecoration: "none" }}>← رجع للخريطة</a>
       </nav>
@@ -250,6 +278,17 @@ function ChatContent() {
         </div>
       )}
 
+      {/* PDF preview */}
+      {pdfName && (
+        <div style={{ padding: "0 32px 8px", maxWidth: "800px", width: "100%", margin: "0 auto" }}>
+          <div style={{ position: "relative", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(201,142,82,0.12)", border: "1px solid rgba(201,142,82,0.3)", borderRadius: "8px", padding: "8px 12px" }}>
+            <span style={{ fontSize: "18px" }}>📄</span>
+            <span style={{ color: "#c98e52", fontSize: "13px" }}>{pdfName}</span>
+            <button onClick={clearPdf} style={{ background: "#c0392b", color: "#fff", border: "none", borderRadius: "50%", width: "18px", height: "18px", cursor: "pointer", fontSize: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
+          </div>
+        </div>
+      )}
+
       {/* Input bar */}
       <div style={{ padding: "8px 32px 32px", maxWidth: "800px", width: "100%", margin: "0 auto" }}>
         <div style={{ display: "flex", gap: "8px", background: "#152818", border: "1px solid rgba(61,158,102,0.3)", borderRadius: "16px", padding: "8px", alignItems: "center" }}>
@@ -260,6 +299,10 @@ function ChatContent() {
             📷
           </button>
           <input ref={fileRef} type="file" accept="image/*" capture="environment" onChange={handleImageChange} style={{ display: "none" }} />
+          <button onClick={() => pdfRef.current?.click()} title="ارفع PDF" style={btnStyle(!!pdfBase64, "#c98e52")}>
+            📄
+          </button>
+          <input ref={pdfRef} type="file" accept="application/pdf" onChange={handlePdfChange} style={{ display: "none" }} />
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -272,14 +315,14 @@ function ChatContent() {
           )}
           <button
             onClick={sendMessage}
-            disabled={loading || (!input.trim() && !imageBase64)}
-            style={{ background: loading || (!input.trim() && !imageBase64) ? "#2a6b42" : "#3d9e66", color: "#fff", border: "none", borderRadius: "12px", padding: "10px 20px", fontSize: "15px", fontWeight: "700", fontFamily: "'Tajawal', sans-serif", cursor: "pointer", flexShrink: 0 }}
+            disabled={loading || (!input.trim() && !imageBase64 && !pdfBase64)}
+            style={{ background: loading || (!input.trim() && !imageBase64 && !pdfBase64) ? "#2a6b42" : "#3d9e66", color: "#fff", border: "none", borderRadius: "12px", padding: "10px 20px", fontSize: "15px", fontWeight: "700", fontFamily: "'Tajawal', sans-serif", cursor: "pointer", flexShrink: 0 }}
           >
             إرسال
           </button>
         </div>
         <p style={{ fontSize: "11px", color: "#4a6a4a", textAlign: "center", marginTop: "6px" }}>
-          🎤 اضغط على الميكروفون وتكلم بالدارجة · 📷 ارفع صورة للتربة أو المحصول
+          🎤 اضغط على الميكروفون وتكلم بالدارجة · 📷 ارفع صورة للتربة أو المحصول · 📄 ارفع ملف PDF
         </p>
       </div>
     </main>

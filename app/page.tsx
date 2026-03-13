@@ -26,7 +26,7 @@ export default function LandingPage() {
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ fontSize: "28px" }}>🌾</span>
-          <span style={{ fontFamily: "'Amiri', serif", fontSize: "22px", color: "#f0e6d0", fontWeight: "700", letterSpacing: "0.5px" }}>فلاحة MA</span>
+          <span style={{ fontFamily: "'Amiri', serif", fontSize: "22px", color: "#f0e6d0", fontWeight: "700", letterSpacing: "0.5px" }}>GreenLife</span>
         </div>
         <div style={{ display: "flex", gap: "32px", alignItems: "center" }}>
           {[
@@ -140,7 +140,7 @@ export default function LandingPage() {
       {/* ── Features ── */}
       <section style={{ padding: "100px 48px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "42px", color: "#f0e6d0", textAlign: "center", marginBottom: "16px" }}>شنو كيقدم فلاحة MA؟</h2>
+          <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "42px", color: "#f0e6d0", textAlign: "center", marginBottom: "16px" }}>شنو كيقدم GreenLife؟</h2>
           <p style={{ color: "#6a8a6a", textAlign: "center", marginBottom: "64px", fontSize: "16px" }}>كل الأدوات اللي محتاجها الفلاح المغربي في مكان واحد</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
             {[
@@ -187,14 +187,14 @@ export default function LandingPage() {
       <footer style={{ borderTop: "1px solid rgba(61,158,102,0.1)", padding: "40px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ fontSize: "20px" }}>🌾</span>
-          <span style={{ fontFamily: "'Amiri', serif", color: "#f0e6d0", fontSize: "16px" }}>فلاحة MA</span>
+          <span style={{ fontFamily: "'Amiri', serif", color: "#f0e6d0", fontSize: "16px" }}>GreenLife</span>
         </div>
         <div style={{ display: "flex", gap: "24px" }}>
           {[{ label: "الحل", href: "/about" }, { label: "المنهجية", href: "/approach" }, { label: "الأسعار", href: "/pricing" }, { label: "الفريق", href: "/team" }, { label: "تواصل معنا", href: "/contact" }].map(item => (
             <Link key={item.href} href={item.href} style={{ color: "#4a6a4a", fontSize: "13px", textDecoration: "none" }}>{item.label}</Link>
           ))}
         </div>
-        <div style={{ color: "#3a5a3a", fontSize: "12px" }}>© 2025 فلاحة MA · هاكاثون Ramadan'IA</div>
+        <div style={{ color: "#3a5a3a", fontSize: "12px" }}>© 2025 GreenLife · هاكاثون Ramadan'IA</div>
       </footer>
 
       <style>{`

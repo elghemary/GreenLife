@@ -16,7 +16,7 @@ export default function AboutPage() {
             المشكلة والحل
           </div>
           <h1 style={{ fontFamily: "'Amiri', serif", fontSize: "52px", color: "#f0e6d0", lineHeight: 1.2, marginBottom: "20px" }}>
-            لماذا فلاحة MA؟
+            لماذا GreenLife؟
           </h1>
           <p style={{ color: "#7a9a7a", fontSize: "18px", lineHeight: 1.8 }}>
             المغرب بلد زراعي — الفلاحة كتمثل 14٪ من الناتج الداخلي الخام وتشغل أكثر من 40٪ من اليد العاملة. لكن الفلاح الصغير غالباً كيختار محصوله بناءً على التجربة والحدس، بدون أي بيانات علمية.
@@ -48,7 +48,7 @@ export default function AboutPage() {
         <section style={{ marginBottom: "80px" }}>
           <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "36px", color: "#3d9e66", marginBottom: "32px" }}>🟢 الحل</h2>
           <p style={{ color: "#7a9a7a", fontSize: "16px", lineHeight: 1.9, marginBottom: "32px" }}>
-            فلاحة MA كتجمع بيانات علمية حقيقية (الطقس، التربة، الموقع) مع نماذج FAO المعتمدة دولياً، وتقدمها للفلاح بطريقة بسيطة — بالدارجة المغربية، بالصوت، وبالصور.
+            GreenLife كتجمع بيانات علمية حقيقية (الطقس، التربة، الموقع) مع نماذج FAO المعتمدة دولياً، وتقدمها للفلاح بطريقة بسيطة — بالدارجة المغربية، بالصوت، وبالصور.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px" }}>
             {[

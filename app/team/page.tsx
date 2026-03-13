@@ -5,30 +5,53 @@ import Navbar from "@/app/components/Navbar";
 export default function TeamPage() {
   const team = [
     {
-      name: "فرح",
-      role: "مطورة رئيسية ومهندسة النماذج",
-      roleEn: "Lead Developer & Model Engineer",
-      bio: "طالبة في برنامج الرياضيات التطبيقية (MIP) بكلية FSTT. متخصصة في نمذجة البيانات الزراعية وتطوير الويب. مسؤولة عن بناء نموذج FAO، البنية التقنية الكاملة، والذكاء الاصطناعي.",
+      name: "فرح الغماري",
+      nameEn: "Farah El Ghemary",
+      contribution: "تطوير Full-stack، هندسة البنية التقنية، والتواصل",
+      contributionEn: "Full-stack development · System architecture · Communication",
+      bio: "طالبة سنة أخيرة في الرياضيات والإعلامية القرارية بكلية FSTT. بنات البنية التقنية الكاملة للمشروع — من نموذج FAO وربط APIs للواجهة والذكاء الاصطناعي. مرشدة في مجال الروبوتيك بـ Mindcraft.",
       skills: ["Next.js", "TypeScript", "FAO Modeling", "Claude AI", "Supabase"],
       emoji: "👩‍💻",
       color: "#3d9e66",
     },
     {
-      name: "عضو الفريق 2",
-      role: "تحليل البيانات الزراعية",
-      roleEn: "Agricultural Data Analyst",
-      bio: "مختص في تحليل بيانات التربة والمناخ وترجمتها لتوصيات زراعية عملية.",
-      skills: ["Data Analysis", "GIS", "Soil Science"],
-      emoji: "🌱",
+      name: "صهيب أحريش",
+      nameEn: "Sohayb Ahrich",
+      contribution: "تطوير Full-stack",
+      contributionEn: "Full-stack development",
+      bio: "طالب سنة أولى بمدرسة 1337. أسهم في تطوير الواجهات والميزات التقنية للمنصة.",
+      skills: ["Full-stack", "Web Development"],
+      emoji: "💻",
       color: "#c98e52",
     },
     {
-      name: "عضو الفريق 3",
-      role: "تصميم تجربة المستخدم",
-      roleEn: "UX Designer",
-      bio: "مصمم متخصص في واجهات المستخدم للمجتمعات الريفية وضمان إمكانية الوصول.",
-      skills: ["UI/UX", "Accessibility", "Figma"],
-      emoji: "🎨",
+      name: "محمد أمين جغوطي",
+      nameEn: "Mohamed Amine Jaghouti",
+      contribution: "دعم التطوير والعرض",
+      contributionEn: "Presentation & development support",
+      bio: "طالب في السنة الأولى من التحضيري لعلوم الكمبيوتر بمدرسة العلوم التطبيقية، UM6P. أسهم في تطوير المشروع وتقديمه.",
+      skills: ["Development Support", "Presentation"],
+      emoji: "🎓",
+      color: "#9ab89a",
+    },
+    {
+      name: "هاجر اشبني",
+      nameEn: "Hajar Ech-chebany",
+      contribution: "بحث البيانات والإحصاء",
+      contributionEn: "Data research & statistics",
+      bio: "طالبة سنة ثالثة في الإحصاء وعلوم البيانات. أسهمت في البحث عن البيانات الزراعية المغربية والمعالجة الإحصائية اللازمة للنموذج.",
+      skills: ["Statistics", "Data Research", "Agricultural Data"],
+      emoji: "📊",
+      color: "#c98e52",
+    },
+    {
+      name: "أيوب",
+      nameEn: "Ayoub",
+      contribution: "النموذج التجاري",
+      contributionEn: "Business model",
+      bio: "طالب سنة أولى بمدرسة 1337. مسؤول عن بناء النموذج التجاري للمشروع.",
+      skills: ["Business Model"],
+      emoji: "📈",
       color: "#9ab89a",
     },
   ];
@@ -56,8 +79,8 @@ export default function TeamPage() {
             }}>
               <div style={{ fontSize: "64px", marginBottom: "16px" }}>{member.emoji}</div>
               <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "26px", color: "#f0e6d0", marginBottom: "4px" }}>{member.name}</h2>
-              <div style={{ color: member.color, fontSize: "13px", fontWeight: "600", marginBottom: "4px" }}>{member.role}</div>
-              <div style={{ color: "#4a6a4a", fontSize: "12px", marginBottom: "20px" }}>{member.roleEn}</div>
+              <div style={{ color: member.color, fontSize: "13px", fontWeight: "600", marginBottom: "4px" }}>{member.contribution}</div>
+              <div style={{ color: "#4a6a4a", fontSize: "12px", marginBottom: "20px" }}>{member.contributionEn}</div>
               <p style={{ color: "#6a8a6a", fontSize: "13px", lineHeight: 1.8, marginBottom: "20px" }}>{member.bio}</p>
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
                 {member.skills.map((skill, j) => (

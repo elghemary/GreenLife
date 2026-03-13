@@ -3,7 +3,7 @@ import "./globals.css";
 import "leaflet/dist/leaflet.css";
 
 export const metadata: Metadata = {
-  title: "فلاحة MA — مستشارك الزراعي الذكي",
+  title: "GreenLife — مستشارك الزراعي الذكي",
   description: "نظام دعم القرار الزراعي للفلاح المغربي",
 };
 

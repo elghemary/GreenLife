@@ -63,7 +63,7 @@ export default function Dashboard() {
       <nav style={{ background: "#112214", borderBottom: "1px solid rgba(61,158,102,0.2)", padding: "16px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ fontSize: "24px" }}>🌾</span>
-          <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>فلاحة MA</span>
+          <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>GreenLife</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <span style={{ color: "#9ab89a", fontSize: "14px" }}>{user?.email}</span>

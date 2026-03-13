@@ -86,15 +86,44 @@ function ScoringContent() {
       <nav style={{ background: "#112214", borderBottom: "1px solid rgba(61,158,102,0.2)", padding: "16px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ fontSize: "24px" }}>🌾</span>
-          <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>فلاحة MA</span>
+          <span style={{ fontFamily: "'Amiri', serif", fontSize: "20px", color: "#f0e6d0", fontWeight: "700" }}>GreenLife</span>
         </div>
         <a href="/dashboard" style={{ color: "#9ab89a", fontSize: "14px", textDecoration: "none" }}>← رجع للخريطة</a>
       </nav>
 
       <div style={{ padding: "40px 32px", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1 style={{ fontFamily: "'Amiri', serif", fontSize: "32px", color: "#f0e6d0", marginBottom: "8px" }}>
-          ملاءمة المحاصيل 🌱
-        </h1>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px", marginBottom: "8px" }}>
+          <h1 style={{ fontFamily: "'Amiri', serif", fontSize: "32px", color: "#f0e6d0", margin: 0 }}>
+            ملاءمة المحاصيل 🌱
+          </h1>
+          {results.length > 0 && weather && soil && (
+            <button
+              onClick={() => {
+                const lines = [
+                  `تقرير GreenLife — ملاءمة المحاصيل`,
+                  `الموقع: ${lat.toFixed(3)}°, ${lon.toFixed(3)}°`,
+                  `متوسط الحرارة: ${weather.temp.toFixed(1)}°C`,
+                  `تقدير الأمطار: ${weather.rain.toFixed(0)} mm`,
+                  `pH التربة: ${soil.ph.toFixed(1)}`,
+                  ``,
+                  ...results.map(c => `${c.nameAr}: ${c.scorePercent}% — ${c.faoClass.label} (${c.faoClass.arabicLabel})`),
+                  ``,
+                  `ملاحظة: هاد التقرير مبني على نموذج FAO GAEZ v4 وبيانات Open-Meteo وSoilGrids.`,
+                ];
+                const blob = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `greenlife-rapport-${lat.toFixed(2)}-${lon.toFixed(2)}.txt`;
+                a.click();
+                URL.revokeObjectURL(url);
+              }}
+              style={{ background: "#3d9e66", color: "#fff", border: "none", borderRadius: "10px", padding: "10px 20px", fontSize: "14px", fontWeight: "700", fontFamily: "'Tajawal', sans-serif", cursor: "pointer", display: "flex", alignItems: "center", gap: "6px" }}
+            >
+              ⬇️ تحميل التقرير
+            </button>
+          )}
+        </div>
 
         {/* Weather + Soil summary */}
         {weather && soil && (

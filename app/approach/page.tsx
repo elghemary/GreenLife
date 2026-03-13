@@ -19,7 +19,7 @@ export default function ApproachPage() {
             المنهجية التقنية
           </h1>
           <p style={{ color: "#7a9a7a", fontSize: "18px", lineHeight: 1.8 }}>
-            كيفاش بنينا فلاحة MA — من الفكرة للنشر في أقل من 48 ساعة
+            كيفاش بنينا GreenLife — من الفكرة للنشر في أقل من 48 ساعة
           </p>
         </div>
 
@@ -27,20 +27,8 @@ export default function ApproachPage() {
         <section style={{ marginBottom: "80px", background: "rgba(201,142,82,0.06)", border: "1px solid rgba(201,142,82,0.2)", borderRadius: "20px", padding: "40px" }}>
           <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "32px", color: "#c98e52", marginBottom: "20px" }}>🏆 سياق الهاكاثون</h2>
           <p style={{ color: "#8a7a6a", fontSize: "15px", lineHeight: 1.9 }}>
-            هاد المشروع تم تطويره في إطار هاكاثون Ramadan'IA، المنظَّم من طرف وزارة الانتقال الرقمي وإصلاح الإدارة — برنامج وطني عبر جهات المملكة خلال رمضان، هدفه تشجيع الابتكار في الذكاء الاصطناعي. التحدي: بناء حل رقمي مبتكر يساعد الفلاح الصغير في اتخاذ القرار الزراعي — في وقت قصير، بموارد محدودة، لمستخدم قد لا يعرف القراءة.
+            هاد المشروع تم تطويره في إطار هاكاثون Ramadan'IA، المنظَّم من طرف وزارة الانتقال الرقمي وإصلاح الإدارة — برنامج وطني عبر جهات المملكة خلال رمضان، هدفه تشجيع الابتكار في الذكاء الاصطناعي. التحدي: بناء حل رقمي مبتكر يساعد الفلاح الصغير في اتخاذ القرار الزراعي — في وقت قصير، بموارد محدودة، لمستخدم قد لا يعرف القراءة. GreenLife ولد من هاد التحدي.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px", marginTop: "28px" }}>
-            {[
-              { label: "مدة التطوير", val: "48 ساعة" },
-              { label: "حجم الفريق", val: "طالبة FSTT" },
-              { label: "الهدف", val: "الفلاح الصغير" },
-            ].map((s, i) => (
-              <div key={i} style={{ textAlign: "center", background: "rgba(201,142,82,0.08)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontFamily: "'Amiri', serif", fontSize: "24px", color: "#c98e52", marginBottom: "6px" }}>{s.val}</div>
-                <div style={{ color: "#6a5a4a", fontSize: "13px" }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
         </section>
 
         {/* Architecture */}
@@ -73,7 +61,7 @@ export default function ApproachPage() {
         <section style={{ marginBottom: "80px", background: "rgba(61,158,102,0.05)", border: "1px solid rgba(61,158,102,0.2)", borderRadius: "20px", padding: "40px" }}>
           <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "32px", color: "#3d9e66", marginBottom: "20px" }}>🎒 الإسهام العلمي: نموذج الكيس</h2>
           <p style={{ color: "#6a9a7a", fontSize: "15px", lineHeight: 1.9, marginBottom: "24px" }}>
-            الإضافة العلمية الأصيلة في فلاحة MA هي إعادة صياغة مشكلة الزراعة كـ<strong style={{ color: "#f0e6d0" }}> مسألة تحسين قيود (Constrained Optimization)</strong>:
+            الإضافة العلمية الأصيلة في GreenLife هي إعادة صياغة مشكلة الزراعة كـ<strong style={{ color: "#f0e6d0" }}> مسألة تحسين قيود (Constrained Optimization)</strong>:
           </p>
           <div style={{ background: "#0a1a0c", borderRadius: "12px", padding: "24px", fontFamily: "monospace", fontSize: "14px", color: "#9ab89a", lineHeight: 2, marginBottom: "24px" }}>
             <div style={{ color: "#c98e52" }}>// هدف: الوصول للفئة S1 بأقل تكلفة</div>
@@ -89,6 +77,38 @@ export default function ApproachPage() {
           </p>
         </section>
 
+        {/* FAO note */}
+        <section style={{ marginBottom: "80px", background: "rgba(201,142,82,0.06)", border: "1px solid rgba(201,142,82,0.2)", borderRadius: "20px", padding: "40px" }}>
+          <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "28px", color: "#c98e52", marginBottom: "16px" }}>⚠️ ملاحظة علمية مهمة</h2>
+          <p style={{ color: "#8a7a6a", fontSize: "15px", lineHeight: 1.9, marginBottom: "16px" }}>
+            نموذج FAO الحالي هو <strong style={{ color: "#f0e6d0" }}>نقطة انطلاق علمية متينة</strong> — يعطي تقديرات موضوعية مبنية على بيانات حقيقية. لكن، للوصول لدقة إنتاجية قابلة للتطبيق الفعلي على أرض المغرب، هاد النموذج يحتاج <strong style={{ color: "#f0e6d0" }}>تحسينات رياضية متخصصة</strong>: معايرة محلية للمعاملات، دمج متغيرات إضافية (خصائص التربة التفصيلية، مواسم النمو المحلية)، وتحقق ميداني من النتائج.
+          </p>
+          <p style={{ color: "#6a5a4a", fontSize: "14px", lineHeight: 1.8 }}>
+            نبحث بنشاط عن باحثين متخصصين في النمذجة الزراعية لتطوير هاد الجانب — إذا كنت مهتماً، <a href="/contact" style={{ color: "#c98e52" }}>تواصل معنا</a>.
+          </p>
+        </section>
+
+        {/* Future vision */}
+        <section style={{ marginBottom: "80px", background: "rgba(61,158,102,0.06)", border: "1px solid rgba(61,158,102,0.2)", borderRadius: "20px", padding: "40px" }}>
+          <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "28px", color: "#3d9e66", marginBottom: "16px" }}>🔭 الرؤية المستقبلية</h2>
+          <p style={{ color: "#6a9a7a", fontSize: "15px", lineHeight: 1.9, marginBottom: "20px" }}>
+            الهدف العلمي بعيد المدى لـ GreenLife هو تطوير <strong style={{ color: "#f0e6d0" }}>نموذج تنبؤي خاص بالمغرب</strong> — مبني على بيانات حقلية حقيقية من الأراضي الزراعية المغربية. هاد الأمر مش مجرد مسألة تحسين رياضي، بل هو مشروع علمي طموح يتطلب جمع بيانات ميدانية، شراكات بحثية، وتدريب نماذج تعلم آلي على خصوصيات الزراعة المغربية.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px" }}>
+            {[
+              { icon: "🧠", title: "نموذج LLM/تنبؤي خاص", desc: "تدريب نموذج على بيانات زراعية مغربية حقيقية — ليس تكييف نموذج جاهز." },
+              { icon: "📡", title: "بيانات حسية IoT", desc: "دمج أجهزة استشعار للمزارع المغلقة والحقول بدون وصول للاستشعار عن بعد — لتحسين التنبؤات حيث تغيب بيانات الأقمار الصناعية." },
+              { icon: "🤝", title: "شراكات ميدانية", desc: "التعاون مع جامعات ومراكز بحثية لجمع بيانات حقلية موثوقة من مختلف جهات المملكة." },
+            ].map((item, i) => (
+              <div key={i} style={{ background: "rgba(61,158,102,0.08)", borderRadius: "12px", padding: "20px" }}>
+                <div style={{ fontSize: "28px", marginBottom: "10px" }}>{item.icon}</div>
+                <h3 style={{ color: "#f0e6d0", fontSize: "15px", marginBottom: "6px" }}>{item.title}</h3>
+                <p style={{ color: "#5a7a5a", fontSize: "13px", lineHeight: 1.7 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Roadmap */}
         <section style={{ marginBottom: "80px" }}>
           <h2 style={{ fontFamily: "'Amiri', serif", fontSize: "36px", color: "#f0e6d0", marginBottom: "32px" }}>🗺️ خارطة الطريق</h2>
@@ -96,8 +116,8 @@ export default function ApproachPage() {
             {[
               { phase: "المرحلة 1 ✅", title: "النموذج الأولي", desc: "نموذج FAO + الذكاء الاصطناعي + الخريطة — مكتمل", done: true },
               { phase: "المرحلة 2 🔄", title: "التحسينات", desc: "بيانات الأمطار الدقيقة، رفع الصور، الصوت الاحترافي", done: false },
-              { phase: "المرحلة 3 ⏳", title: "نموذج LSTM", desc: "توقعات زراعية بالتعلم الآلي بناءً على بيانات ONCA", done: false },
-              { phase: "المرحلة 4 ⏳", title: "شراكة حكومية", desc: "ربط مع بيانات وزارة الانتقال الرقمي وONCA وCRDA", done: false },
+              { phase: "المرحلة 3 ⏳", title: "نموذج تنبؤي مغربي", desc: "تدريب نموذج تعلم آلي على بيانات حقلية مغربية حقيقية — الطموح العلمي الأساسي لـ GreenLife", done: false },
+              { phase: "المرحلة 4 ⏳", title: "شراكة مؤسسية وبحثية", desc: "ربط مع بيانات الوزارات والمؤسسات المعنية وشراكات جامعية", done: false },
             ].map((item, i) => (
               <div key={i} style={{ display: "flex", gap: "20px", paddingBottom: "32px", position: "relative" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
