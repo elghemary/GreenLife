@@ -88,22 +88,22 @@ export default function Dashboard() {
           <MapPicker lat={lat} lon={lon} onChange={(newLat, newLon) => { setLat(newLat); setLon(newLon); reverseGeocode(newLat, newLon); }} />
           <p style={{ marginTop: "12px", fontSize: "13px", color: "#6a8a6a", textAlign: "center" }}>ضغط على الخريطة أو سحب الدبوس باش تحدد موقع أرضك بالضبط</p>
         </div>
-        <a href={`/dashboard/scoring?lat=${lat}&lon=${lon}`} style={{ textDecoration: "none" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
           {[
-            { icon: "🌾", title: "ملاءمة المحاصيل", desc: "9 محاصيل مغربية مُقيَّمة", color: "rgba(201,142,82,0.15)" },
-            { icon: "⛅", title: "الطقس", desc: "توقعات 7 أيام لموقعك", color: "rgba(61,120,180,0.15)" },
-            { icon: "🪨", title: "تحليل التربة", desc: "pH، NPK لموقعك", color: "rgba(100,80,40,0.2)" },
-            { icon: "🤖", title: "المستشار الذكي", desc: "اسأل بالدارجة", color: "rgba(120,61,158,0.15)" },
+            { icon: "🌾", title: "ملاءمة المحاصيل", desc: "9 محاصيل مغربية مُقيَّمة", color: "rgba(201,142,82,0.15)", href: `/dashboard/scoring?lat=${lat}&lon=${lon}` },
+            { icon: "⛅", title: "الطقس", desc: "توقعات 7 أيام لموقعك", color: "rgba(61,120,180,0.15)", href: null },
+            { icon: "🪨", title: "تحليل التربة", desc: "pH، NPK لموقعك", color: "rgba(100,80,40,0.2)", href: null },
+            { icon: "🤖", title: "المستشار الذكي", desc: "اسأل بالدارجة", color: "rgba(120,61,158,0.15)", href: `/dashboard/chat?lat=${lat}&lon=${lon}&location=${locationName}` },
           ].map((card, i) => (
-            <div key={i} style={{ background: "#152818", border: "1px solid rgba(61,158,102,0.2)", borderRadius: "16px", padding: "24px", cursor: "pointer" }}>
-              <div style={{ width: "48px", height: "48px", background: card.color, borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px", marginBottom: "14px" }}>{card.icon}</div>
-              <div style={{ fontSize: "16px", fontWeight: "700", color: "#f0e6d0", marginBottom: "4px" }}>{card.title}</div>
-              <div style={{ fontSize: "13px", color: "#9ab89a" }}>{card.desc}</div>
-            </div>
+            <a key={i} href={card.href || "#"} style={{ textDecoration: "none" }}>
+              <div style={{ background: "#152818", border: "1px solid rgba(61,158,102,0.2)", borderRadius: "16px", padding: "24px", cursor: card.href ? "pointer" : "default", opacity: card.href ? 1 : 0.6 }}>
+                <div style={{ width: "48px", height: "48px", background: card.color, borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px", marginBottom: "14px" }}>{card.icon}</div>
+                <div style={{ fontSize: "16px", fontWeight: "700", color: "#f0e6d0", marginBottom: "4px" }}>{card.title}</div>
+                <div style={{ fontSize: "13px", color: "#9ab89a" }}>{card.desc}</div>
+              </div>
+            </a>
           ))}
         </div>
-        </a>
       </div>
     </main>
   );
