@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { scoreAllCrops } from "@/lib/scoring";
 
@@ -14,7 +14,7 @@ interface CropResult {
   factors: { nameAr: string; score: number; value: string }[];
 }
 
-export default function ScoringPage() {
+function ScoringContent() {
   const params = useSearchParams();
   const lat = parseFloat(params.get("lat") || "33.897");
   const lon = parseFloat(params.get("lon") || "-5.554");
@@ -162,5 +162,17 @@ export default function ScoringPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ScoringPage() {
+  return (
+    <Suspense fallback={
+      <main style={{ minHeight: "100vh", background: "#0b1c0d", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Tajawal', sans-serif", color: "#9ab89a", fontSize: "18px" }}>
+        جاري التحميل...
+      </main>
+    }>
+      <ScoringContent />
+    </Suspense>
   );
 }
