@@ -39,15 +39,21 @@ function ScoringContent() {
         const totalRain = rains.reduce((a, b) => a + b, 0) * 12; // monthly → annual estimate
         setWeather({ temp: avgTemp, rain: totalRain });
 
-        // ── 2. Soil: SoilGrids ──────────────────────────────────────────
-        const soilRes = await fetch(
-          `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${lon}&lat=${lat}&property=phh2o&depth=0-5cm&value=mean`
-        );
+    // ── 2. Soil: SoilGrids (with fallback) ─────────────────────────────
+    let ph = 6.5; // Morocco average fallback
+    try {
+    const soilRes = await fetch(
+        `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${lon}&lat=${lat}&property=phh2o&depth=0-5cm&value=mean`
+    );
+    if (soilRes.ok) {
         const soilData = await soilRes.json();
         const phRaw = soilData.properties?.layers?.[0]?.depths?.[0]?.values?.mean;
-        const ph = phRaw ? phRaw / 10 : 6.5; // SoilGrids returns pH × 10
-        setSoil({ ph });
-
+        if (phRaw) ph = phRaw / 10;
+    }
+    } catch {
+    // SoilGrids unavailable, using Morocco average pH 6.5
+    }
+    setSoil({ ph });
         // ── 3. Score all crops ──────────────────────────────────────────
         const scored = scoreAllCrops(avgTemp, ph, totalRain);
         setResults(scored as CropResult[]);
