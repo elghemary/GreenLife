@@ -156,7 +156,7 @@ Open-Meteo and SoilGrids are **free and open** — no API key needed.
 ## Project Structure
 
 ```
-filaha-ma/
+GreenLife/
 ├── app/
 │   ├── page.tsx                  # Landing page (hero, features, CTA)
 │   ├── layout.tsx                # Root layout (RTL, Arabic fonts, metadata)
