@@ -293,8 +293,6 @@ A template is provided at `.env.example`. Copy it and fill in your own values:
 cp .env.example .env.local
 ```
 
-> **Never commit `.env.local`** — it's already in `.gitignore`.
-
 | Variable | Where to get it |
 |---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | [supabase.com](https://supabase.com) → your project → Settings → API |
